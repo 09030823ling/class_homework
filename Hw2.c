@@ -21,7 +21,6 @@ int main()
     }
     else{
         menu();
-
     }
     return 0;
 }
@@ -59,7 +58,7 @@ void welcome(){
 
 void menu(){
     system("clear");// Clear the console on MacOS
-    void A();// Function prototype
+    void A(),B(),C();// Function prototype
     dash;
     printf("|                a. Draw a right triangle                    |\n");
     printf("|                b. Show multiplication table                |\n");
@@ -71,12 +70,15 @@ void menu(){
         valid=0;
         printf("Enter your choice:");
         scanf(" %c",&choice);
+        if(choice-'A'>=0 && choice-'C'<=0){// Convert uppercase(A-C) to lowercase
+            choice=choice-'A'+'a';
+        }
         switch(choice){
             case 'a':
                 A();
                 break;
             case 'b':
-            
+                B();
                 break;
             case 'c':
             
@@ -114,4 +116,26 @@ void A(){
     system("read -n 1 -s");// Wait for user input before returning to the menu (This is search on the internet, I don't know how to use getch() in MacOS or VScode)
     menu();
     
+}
+void B(){
+    int n;
+    printf("Please enter a number in 1 to 9:");
+    scanf(" %d",&n);
+    while(n<1 || n>9){// Check if the input is valid
+        printf("Your enter is wrong.Please enter a number in 1 to 9:");
+        scanf(" %d",&n);
+    }
+    printf("Multiplication Table:\n");
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            printf("%2d*%-2d=%2d ",j,i,i*j);
+        }
+        printf("\n");
+
+    }
+    
+    printf("Press any key to return to the menu...");
+    fflush(stdout);//because the output is buffered, we need to flush it before waiting for user input
+    system("read -n 1 -s");// Wait for user input before returning to the menu (This is search on the internet, I don't know how to use getch() in MacOS or VScode)
+    menu();
 }

@@ -158,3 +158,11 @@ void C(){
         return;
     }
 }
+/*
+
+This assignment was a great lesson in modular programming, improving code readability through function-based structure. 
+I prioritized robust input validation and case-insensitive logic to ensure a stable, user-friendly experience. 
+The highlight was overcoming cross-platform challenges by finding MacOS-compatible alternatives for <conio.h> and getch().
+This problem-solving process significantly deepened my understanding of C programming and system-level differences.
+
+*/

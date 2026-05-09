@@ -81,7 +81,7 @@ void menu(){
                 B();
                 break;
             case 'c':
-            
+                C();
                 break;
             default:
                 printf("Invalid choice.\n");
@@ -138,4 +138,23 @@ void B(){
     fflush(stdout);//because the output is buffered, we need to flush it before waiting for user input
     system("read -n 1 -s");// Wait for user input before returning to the menu (This is search on the internet, I don't know how to use getch() in MacOS or VScode)
     menu();
+}
+void C(){
+    printf("Continue?(y/n)\n");
+    char answer;
+    scanf(" %c",&answer);
+    if(answer-'A'>=0 && answer-'Z'<=0){// Convert uppercase(Y/N) to lowercase
+        answer=answer-'A'+'a';
+    }
+    while(answer!='y' && answer!='n'){// Check if the input is valid
+        printf("Your enter is wrong.Please enter y or n:");
+        scanf(" %c",&answer);
+    }
+    if(answer=='y'){
+        menu();
+    }
+    else{
+        printf("Goodbye!\n");
+        return;
+    }
 }

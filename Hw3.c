@@ -76,7 +76,7 @@ void menu(){
         valid=0;
         printf("Enter your choice:");
         scanf(" %c",&choice);
-        if(choice-'A'>=0 && choice-'C'<=0){// Convert uppercase(A-C) to lowercase
+        if(choice-'A'>=0 && choice-'D'<=0){// Convert uppercase(A-D) to lowercase
             choice=choice-'A'+'a';
         }
         switch(choice){
@@ -225,8 +225,8 @@ void B(){
                 else continue;
             }
         }
-        else{//好複雜qwq我再想想
-            if(r==8){//只需要判斷4人同排
+        else{
+            if(r==8){//the last row can only consider 4 in a row
                 
                 while(countc<9-3 && found){
                     int c=rand()%(9-3);
@@ -248,7 +248,7 @@ void B(){
                     else continue;
                 }
             }
-            else{//其他列可以先考慮4人同排再看2+2
+            else{
                 int rchoice=rand()%2;// Randomly choose to check 4 in a row or 2+2
                 for(int i=0;i<2;i++){
                     if(i==1) rchoice=1-rchoice;// Change the choice to check the other option
@@ -319,14 +319,14 @@ void B(){
     system("read -n 1 -s");// Wait for user input before returning to the menu (This is search on the internet, I don't know how to use getch() in MacOS or VScode)
     menu();
 }
-void C(){//換輸入成字串再轉啦啦啦啦（很麻煩owo）
+void C(){
     void show_book(),show();
     int rb[82]={0},cb[82]={0};
     int check=1;// Variable to check if the input is valid
     int found=1;// Variable to indicate whether the seats are found
     int p=0,now=0;// Variable to store the row and column of the seats
     char seat[250];// Variable to store the input seat
-    getchar(); // 清掉上一個輸入殘留（很重要）
+    getchar(); // clear the input buffer
     while(found){
         for(int i=0;i<=250;i++){
             seat[i]='0';
@@ -407,10 +407,12 @@ void D(){
     return;
 }
 /*
-
-This assignment was a great lesson in modular programming, improving code readability through function-based structure. 
-I prioritized robust input validation and case-insensitive logic to ensure a stable, user-friendly experience. 
-The highlight was overcoming cross-platform challenges by finding MacOS-compatible alternatives for <conio.h> and getch().
-This problem-solving process significantly deepened my understanding of C programming and system-level differences.
+My Reflection
+This project allowed me to focus more on practical program design and handling real-world user interactions. 
+I implemented a seat reservation system that required careful management of a two-dimensional array to represent seat states and transitions between available, selected, and confirmed bookings.
+A key challenge in this assignment was parsing user input with flexible formats, especially when dealing with multiple seat selections in a single line. 
+I learned how to properly use fgets and manual string parsing instead of relying on simpler input functions, which improved the program’s reliability.
+I also strengthened my understanding of control flow by handling various edge cases, such as invalid formats and already-occupied seats. 
+Designing these checks required me to think more carefully about program robustness and user experience.
 
 */
